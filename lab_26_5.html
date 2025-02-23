@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Fonts</title>
+    <style>
+        @font-face {
+            font-family: 'Roboto';
+            src: url('Roboto-VariableFont_wdth,wght.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Roboto Italic';
+            src: url('Roboto-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+            font-style: italic;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .italic {
+            font-family: 'Roboto Italic', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Custom Font Example</h1>
+    <p>This text is using the Roboto font.</p>
+    <p class="italic">This text is using the italic Roboto font.</p>
+</body>
+</html>
