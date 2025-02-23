@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Borders and Border Radius</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .box {
+            width: 250px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .solid-border {
+            border: 5px solid #3498db;
+            background-color: #e3f2fd;
+        }
+
+        .dashed-border {
+            border: 5px dashed #e74c3c;
+            background-color: #f9e0e0;
+        }
+
+        .dotted-border {
+            border: 5px dotted #2ecc71;
+            background-color: #eafaf1;
+        }
+
+        .rounded-box {
+            border: 5px solid #9b59b6;
+            background-color: #f5e6fc;
+            border-radius: 15px;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border: 5px solid #f1c40f;
+            background-color: #fef5c3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box solid-border">Solid Border</div>
+    <div class="box dashed-border">Dashed Border</div>
+    <div class="box dotted-border">Dotted Border</div>
+    <div class="box rounded-box">Rounded Corners</div>
+    <div class="circle">Circle</div>
+
+</body>
+</html>
