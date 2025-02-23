@@ -1,0 +1,5 @@
+string_number = input("Enter a number as a string: ")
+int_value = int(string_number)
+float_value = float(int_value)
+print("Converted to integer:", int_value)
+print("Converted to float:", float_value)
