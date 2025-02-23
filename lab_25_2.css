@@ -1,0 +1,13 @@
+p {
+    color: forestgreen;
+}
+
+.highlight {
+    background-color: lightcoral;
+    font-weight: bold;
+}
+
+#main-heading {
+    color: darkslateblue;
+    text-align: center;
+}
