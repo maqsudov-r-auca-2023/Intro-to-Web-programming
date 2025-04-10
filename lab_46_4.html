@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dynamic Image Gallery</h1>
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const imageUrls = [
+            "https://via.placeholder.com/300",
+            "https://via.placeholder.com/300/0000FF/808080",
+            "https://via.placeholder.com/300/FF0000/FFFFFF",
+            "https://via.placeholder.com/300/008000/FFFFFF",
+            "https://via.placeholder.com/300/FFFF00/000000",
+            "https://via.placeholder.com/300/800080/FFFFFF"
+        ];
+
+        const gallery = document.getElementById("gallery");
+
+        imageUrls.forEach(url => {
+            const img = document.createElement("img");
+            img.src = url;
+            img.alt = "Dynamic Image";
+
+            gallery.appendChild(img);
+        });
+    </script>
+
+</body>
+</html>

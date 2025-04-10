@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery with Modal and Local Storage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+            position: relative;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .modal img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transform: scale(1);
+            transition: transform 0.5s ease;
+        }
+
+        .modal img.zoomed {
+            transform: scale(1.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            font-size: 30px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+            transform: translateY(-50%);
+        }
+
+        .prev-btn {
+            left: 10px;
+        }
+
+        .next-btn {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Image Gallery with Modal and Local Storage</h1>
+    <div class="gallery">
+        <img src="https://via.placeholder.com/300" alt="Image 1" class="gallery-image">
+        <img src="https://via.placeholder.com/300/0000FF/808080" alt="Image 2" class="gallery-image">
+        <img src="https://via.placeholder.com/300/FF0000/FFFFFF" alt="Image 3" class="gallery-image">
+        <img src="https://via.placeholder.com/300/008000/FFFFFF" alt="Image 4" class="gallery-image">
+        <img src="https://via.placeholder.com/300/FFFF00/000000" alt="Image 5" class="gallery-image">
+        <img src="https://via.placeholder.com/300/800080/FFFFFF" alt="Image 6" class="gallery-image">
+    </div>
+
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal">&times;</button>
+            <button class="nav-btn prev-btn" id="prevImage">←</button>
+            <img id="modalImage" src="" alt="Full Image">
+            <button class="nav-btn next-btn" id="nextImage">→</button>
+        </div>
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.gallery-image');
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.getElementById('closeModal');
+        const prevImage = document.getElementById('prevImage');
+        const nextImage = document.getElementById('nextImage');
+
+        let currentIndex = 0;
+        let imageArray = [];
+
+        images.forEach((image, index) => {
+            image.addEventListener('click', function() {
+                modal.style.display = 'flex';
+                modal.style.opacity = '1';
+                modalImage.src = this.src;
+                currentIndex = index;
+                imageArray = Array.from(images);
+
+                modalImage.classList.add('zoomed');
+                setTimeout(() => modalImage.classList.remove('zoomed'), 500);
+
+                localStorage.setItem('lastViewedImage', this.src);
+            });
+        });
+
+        window.onload = function() {
+            const lastViewedImage = localStorage.getItem('lastViewedImage');
+            if (lastViewedImage) {
+                modal.style.display = 'flex';
+                modal.style.opacity = '1';
+                modalImage.src = lastViewedImage;
+            }
+        };
+
+        closeModal.addEventListener('click', function() {
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 500);
+        });
+
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.opacity = '0';
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 500);
+            }
+        });
+
+        prevImage.addEventListener('click', function() {
+            currentIndex = (currentIndex === 0) ? imageArray.length - 1 : currentIndex - 1;
+            modalImage.src = imageArray[currentIndex].src;
+        });
+
+        nextImage.addEventListener('click', function() {
+            currentIndex = (currentIndex === imageArray.length - 1) ? 0 : currentIndex + 1;
+            modalImage.src = imageArray[currentIndex].src;
+        });
+    </script>
+
+</body>
+</html>
