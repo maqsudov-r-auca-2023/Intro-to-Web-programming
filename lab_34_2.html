@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voting Eligibility</title>
+</head>
+<body>
+
+    <h2>Open your console to check voting eligibility!</h2>
+
+    <script>
+        let age = 20;
+        let isRegistered = true;
+
+        if (age >= 18 && isRegistered) {
+            console.log("You are eligible to vote.");
+        } else {
+            console.log("You are not eligible to vote.");
+        }
+
+        console.log("Using || :", age >= 18 || isRegistered);
+        console.log("Using ! :", !isRegistered);
+    </script>
+
+</body>
+</html>
