@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Block Scope Demo</title>
+</head>
+<body>
+
+    <h2>Open the console to observe block scope behavior</h2>
+
+    <script>
+        if (true) {
+            var varVariable = "I am var!";
+        }
+        console.log("varVariable:", varVariable);
+
+        if (true) {
+            let letVariable = "I am let!";
+        }
+        console.log("letVariable:", letVariable);
+
+        if (true) {
+            const constVariable = "I am const!";
+        }
+        console.log("constVariable:", constVariable);
+    </script>
+
+</body>
+</html>

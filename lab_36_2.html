@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scope Demo</title>
+</head>
+<body>
+
+    <h2>Open the console to observe scope behavior</h2>
+
+    <script>
+        let message = "Hello from global";
+
+        function helloGlobal() {
+            let localMessage = "Hello from function scope";
+            console.log(localMessage);
+        }
+
+        helloGlobal();
+        console.log(message);
+        console.log(localMessage);
+    </script>
+
+</body>
+</html>
