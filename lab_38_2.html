@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Debugging with console.log() - Lab 2</title>
+</head>
+<body>
+
+    <h2>Check Console for Results</h2>
+
+    <script>
+        let numbers = [10, 15, 20, 25, 30];
+        let sum = 0;
+
+        for (let num of numbers) {
+            console.log("Current number:", num);
+
+            if (num % 2 === 0) {
+                sum += num;
+            }
+        }
+
+        console.log("Total sum of even numbers:", sum);
+    </script>
+
+</body>
+</html>
